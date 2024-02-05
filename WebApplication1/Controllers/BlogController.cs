@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Cors;
 using WebApplication1.Models;
 using WebApplication1.Repository;
 using System.Runtime.InteropServices;
+using WebApplication1.Model;
 
 namespace WebApplication1.Controllers
 {
@@ -56,12 +57,40 @@ namespace WebApplication1.Controllers
             return Ok(blog);
         }
 
+        [HttpGet("GetThisBlog")]
+        public ActionResult GetThisBlog(int blogId)
+        {
+            var blog = blogRepository.GetThisBlog(blogId);
+            return Ok(blog);
+        }
+
         [HttpGet("GetComments")]
         public ActionResult GetComments(int id)
         {
             var comments = blogRepository.GetComments(id);
             return Ok(comments);
         }
+
+        [HttpGet("GetBlogLikesCommentsCount")]
+        public ActionResult GetBlogLikesCommentsCount(int blogId)
+        {
+            var blogDetails = blogRepository.GetBlogLikesCommentsCount(blogId);
+            return Ok(blogDetails);
+        }
+
+        [HttpPost("LikeBlog")]
+        public ActionResult LikeBlog(BlogLikes blogLikes)
+        {
+            var response = blogRepository.LikeBlogAsync(blogLikes);
+            return Ok(response);
+        }
+
+        //[HttpGet("GetBlogCommentCount")]
+        //public int GetBlogCommentCount(int blogId)
+        //{
+        //    int blogDetails = blogRepository.GetBlogCommentCount(blogId);
+        //    return blogDetails;
+        //}
 
     }
 }
