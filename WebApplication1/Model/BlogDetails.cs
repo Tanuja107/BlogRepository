@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
@@ -13,6 +14,7 @@ namespace WebApplication1.Models
         public DateTime? CreationDate { get; set; }
 
         public DateTime? ModificationDate { get; set; }
-        public string? UserName { get; internal set; }
+        [NotMapped]
+        public string? UserName { get; set; }
     }
 }
