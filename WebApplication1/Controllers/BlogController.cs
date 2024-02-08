@@ -92,5 +92,15 @@ namespace WebApplication1.Controllers
         //    return blogDetails;
         //}
 
+
+
+
+        //[Route("api/greetings/{name}")]
+        [HttpGet("GetGreetings")]
+        public string GetGreetings(string name)
+        {
+            return $"Hello {name}, Welcome to Web API";
+        }
+
     }
 }
